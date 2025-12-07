@@ -1,4 +1,5 @@
 version: 0.2
+
 phases:
   install:
     runtime-versions:
@@ -6,15 +7,14 @@ phases:
     commands:
       - echo Installing dependencies...
       - pip install -r requirements.txt
+      - pip install pytest
   pre_build:
     commands:
-      - echo start prebuild and it
+      - echo Start pre-build...
   build:
     commands:
       - echo Running unit tests with pytest...
-      - python  --junitxml=reports/results.xml --tb=short
-  
-  
+      - pytest --junitxml=reports/results.xml --tb=short
   post_build:
     commands:
       - echo Build completed successfully.
